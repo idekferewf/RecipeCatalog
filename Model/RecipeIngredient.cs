@@ -5,8 +5,7 @@ namespace RecipeCatalog.Model
 {
     public class RecipeIngredient
     {
-        [Required]
-        public required int Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public required int RecipeId { get; set; }
