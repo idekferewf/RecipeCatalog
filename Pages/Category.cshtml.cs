@@ -43,7 +43,7 @@ namespace RecipeCatalog.Pages
                 }
                 _context.SaveChanges();
             }
-            return RedirectToPage("Index");
+            return RedirectToPage("Categories");
         }
     }
 }
