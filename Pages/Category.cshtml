@@ -13,9 +13,17 @@
 		<div class="form-group">
 			<label for="Name">Название категории:</label>
 			<input type="text" id="Name" name="Name" value="@Model.Category.Name" required class="mt-2 form-control"
-				placeholder="Введите название категории" />
+			placeholder="Введите название категории" />
 		</div>
-		<button type="submit" class="mt-3 btn btn-primary">Сохранить</button>
+		<div class="mt-3 d-flex gap-1">
+			<button type="submit" class="btn btn-primary">Сохранить</button>
+			@if (Model.Category.Id != 0)
+			{
+				<a class="btn btn-danger" href="@Url.Page("CategoryDelete", new { id = Model.Category.Id })">
+					Удалить
+				</a>
+			}
+		</div>
 	</form>
 }
 else
