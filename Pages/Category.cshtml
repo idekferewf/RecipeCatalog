@@ -1,6 +1,12 @@
 @page
 @model RecipeCatalog.Pages.CategoryModel
 @{
+	if (Model.Category != null && Model.Category.Id != 0) {
+		ViewData["Title"] = Model.Category.Name;
+	} else
+	{
+		ViewData["Title"] = "Добавить категорию";
+	}
 }
 
 @if (Model.Category != null)
