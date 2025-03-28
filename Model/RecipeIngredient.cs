@@ -10,14 +10,12 @@ namespace RecipeCatalog.Model
         [Required(ErrorMessage = "Необходимо указать рецепт.")]
         public required int RecipeId { get; set; }
 
-        [Required]
         [ForeignKey("RecipeId")]
         public required Recipe Recipe { get; set; }
 
         [Required(ErrorMessage = "Необходимо указать ингредиент.")]
         public required int IngredientId { get; set; }
 
-        [Required]
         [ForeignKey("IngredientId")]
         public required Ingredient Ingredient { get; set; }
 

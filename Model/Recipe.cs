@@ -14,7 +14,6 @@ namespace RecipeCatalog.Model
         [Required(ErrorMessage = "Необходимо указать категорию рецепта.")]
         public required int CategoryId { get; set; }
 
-        [Required]
         [ForeignKey("CategoryId")]
         public required Category Category { get; set; }
 
