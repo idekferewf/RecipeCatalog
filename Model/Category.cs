@@ -11,6 +11,6 @@ namespace RecipeCatalog.Model
         public required string Name { get; set; }
 
         [Required]
-        public required List<Recipe> Recipes { get; set; } = new List<Recipe>();
+        public required List<Recipe> Recipes { get; set; } = [];
     }
 }
