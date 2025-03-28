@@ -7,11 +7,11 @@ namespace RecipeCatalog.Model
     {
         public int Id { get; set; }
 
-        [Required]
-        [StringLength(255)]
+        [Required(ErrorMessage = "Необходимо указать название рецепта.")]
+        [StringLength(255, ErrorMessage = "Название рецепта не должно превышать 255 символов.")]
         public required string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Необходимо указать категорию рецепта.")]
         public required int CategoryId { get; set; }
 
         [Required]

@@ -7,21 +7,21 @@ namespace RecipeCatalog.Model
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Необходимо указать рецепт.")]
         public required int RecipeId { get; set; }
 
         [Required]
         [ForeignKey("RecipeId")]
         public required Recipe Recipe { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Необходимо указать ингредиент.")]
         public required int IngredientId { get; set; }
 
         [Required]
         [ForeignKey("IngredientId")]
         public required Ingredient Ingredient { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Необходимо указать количество ингредиента.")]
         [Column(TypeName = "decimal(6, 3)")]
         public required decimal Quantity { get; set; }
     }
