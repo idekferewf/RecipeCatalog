@@ -20,7 +20,6 @@ namespace RecipeCatalog.Model
         [Required]
         public required List<RecipeIngredient> RecipeIngredients { get; set; } = [];
 
-        [Required]
         public required DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }
 }
