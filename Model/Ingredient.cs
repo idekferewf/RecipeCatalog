@@ -1,4 +1,4 @@
-using System.ComponentModel.DataAnnotations;
+п»їusing System.ComponentModel.DataAnnotations;
 
 namespace RecipeCatalog.Model
 {
@@ -6,12 +6,12 @@ namespace RecipeCatalog.Model
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Необходимо указать название ингредиента.")]
-        [StringLength(255, ErrorMessage = "Название ингредиента не должно превышать 255 символов.")]
+        [Required(ErrorMessage = "РќРµРѕР±С…РѕРґРёРјРѕ СѓРєР°Р·Р°С‚СЊ РЅР°Р·РІР°РЅРёРµ РёРЅРіСЂРµРґРёРµРЅС‚Р°.")]
+        [StringLength(255, ErrorMessage = "РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ РґР»РёРЅР° РЅР°Р·РІР°РЅРёСЏ РёРЅРіСЂРµРґРёРµРЅС‚Р° - 255 СЃРёРјРІРѕР»РѕРІ.")]
         public required string Name { get; set; }
 
-        [Required(ErrorMessage = "Необходимо указать единицу измерения ингредиента.")]
-        [StringLength(30, ErrorMessage = "Единица измерения не должна превышать 30 символов.")]
+        [Required(ErrorMessage = "РќРµРѕР±С…РѕРґРёРјРѕ СѓРєР°Р·Р°С‚СЊ РµРґРёРЅРёС†Сѓ РёР·РјРµСЂРµРЅРёСЏ РёРЅРіСЂРµРґРёРµРЅС‚Р°.")]
+        [StringLength(30, ErrorMessage = "РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ РґР»РёРЅР° РµРґРёРЅРёС†С‹ РёР·РјРµСЂРµРЅРёСЏ РёРЅРіСЂРµРґРёРµРЅС‚Р° - 255 СЃРёРјРІРѕР»РѕРІ.")]
         public required string Unit { get; set; }
 
         [Required]

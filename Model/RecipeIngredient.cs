@@ -1,4 +1,4 @@
-using System.ComponentModel.DataAnnotations;
+п»їusing System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RecipeCatalog.Model
@@ -7,19 +7,19 @@ namespace RecipeCatalog.Model
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Необходимо указать рецепт.")]
+        [Required(ErrorMessage = "РќРµРѕР±С…РѕРґРёРјРѕ СѓРєР°Р·Р°С‚СЊ СЂРµС†РµРїС‚.")]
         public required int RecipeId { get; set; }
 
         [ForeignKey("RecipeId")]
         public required Recipe Recipe { get; set; }
 
-        [Required(ErrorMessage = "Необходимо указать ингредиент.")]
+        [Required(ErrorMessage = "РќРµРѕР±С…РѕРґРёРјРѕ СѓРєР°Р·Р°С‚СЊ РёРЅРіСЂРµРґРёРµРЅС‚.")]
         public required int IngredientId { get; set; }
 
         [ForeignKey("IngredientId")]
         public required Ingredient Ingredient { get; set; }
 
-        [Required(ErrorMessage = "Необходимо указать количество ингредиента.")]
+        [Required(ErrorMessage = "РќРµРѕР±С…РѕРґРёРјРѕ СѓРєР°Р·Р°С‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ РёРЅРіСЂРµРґРёРµРЅС‚Р°.")]
         [Column(TypeName = "decimal(6, 3)")]
         public required decimal Quantity { get; set; }
     }
