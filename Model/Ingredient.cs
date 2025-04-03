@@ -11,10 +11,9 @@ namespace RecipeCatalog.Model
         public required string Name { get; set; }
 
         [Required(ErrorMessage = "Необходимо указать единицу измерения ингредиента.")]
-        [StringLength(30, ErrorMessage = "Максимальная длина единицы измерения ингредиента - 255 символов.")]
+        [StringLength(30, ErrorMessage = "Максимальная длина единицы измерения ингредиента - 30 символов.")]
         public required string Unit { get; set; }
 
-        [Required]
         public required List<RecipeIngredient> RecipeIngredients { get; set; } = [];
     }
 }

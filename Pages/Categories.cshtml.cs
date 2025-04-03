@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using RecipeCatalog.Data;
 using RecipeCatalog.Model;
 
@@ -17,7 +18,7 @@ namespace RecipeCatalog.Pages
 
         public void OnGet()
         {
-            Categories = _context.Categories.ToList();
+            Categories = _context.Categories.Include(c => c.Recipes).ToList();
         }
     }
 }
