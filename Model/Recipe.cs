@@ -17,7 +17,6 @@ namespace RecipeCatalog.Model
         [ForeignKey("CategoryId")]
         public required Category Category { get; set; }
 
-        [Required]
         public required List<RecipeIngredient> RecipeIngredients { get; set; } = [];
 
         public required DateTime CreatedAt { get; set; } = DateTime.UtcNow;
