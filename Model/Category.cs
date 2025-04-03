@@ -1,4 +1,4 @@
-using System.ComponentModel.DataAnnotations;
+п»їusing System.ComponentModel.DataAnnotations;
 
 namespace RecipeCatalog.Model
 {
@@ -6,8 +6,8 @@ namespace RecipeCatalog.Model
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Необходимо указать название категории.")]
-        [StringLength(255, ErrorMessage = "Название категории не должно превышать 255 символов.")]
+        [Required(ErrorMessage = "РќРµРѕР±С…РѕРґРёРјРѕ СѓРєР°Р·Р°С‚СЊ РЅР°Р·РІР°РЅРёРµ РєР°С‚РµРіРѕСЂРёРё.")]
+        [StringLength(255, ErrorMessage = "РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ РґР»РёРЅР° РЅР°Р·РІР°РЅРёСЏ РєР°С‚РµРіРѕСЂРёРё - 255 СЃРёРјРІРѕР»РѕРІ.")]
         public required string Name { get; set; }
 
         [Required]

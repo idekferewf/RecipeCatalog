@@ -7,11 +7,11 @@ namespace RecipeCatalog.Model
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Необходимо указать название рецепта.")]
-        [StringLength(255, ErrorMessage = "Название рецепта не должно превышать 255 символов.")]
+        [Required(ErrorMessage = "РќРµРѕР±С…РѕРґРёРјРѕ СѓРєР°Р·Р°С‚СЊ РЅР°Р·РІР°РЅРёРµ СЂРµС†РµРїС‚Р°.")]
+        [StringLength(255, ErrorMessage = "РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ РґР»РёРЅР° РЅР°Р·РІР°РЅРёСЏ СЂРµС†РµРїС‚Р° - 255 СЃРёРјРІРѕР»РѕРІ.")]
         public required string Name { get; set; }
 
-        [Required(ErrorMessage = "Необходимо указать категорию рецепта.")]
+        [Required(ErrorMessage = "РќРµРѕР±С…РѕРґРёРјРѕ СѓРєР°Р·Р°С‚СЊ РєР°С‚РµРіРѕСЂРёСЋ СЂРµС†РµРїС‚Р°.")]
         public required int CategoryId { get; set; }
 
         [ForeignKey("CategoryId")]
