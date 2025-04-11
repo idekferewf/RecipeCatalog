@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace RecipeCatalog.Model
 {
@@ -14,6 +15,7 @@ namespace RecipeCatalog.Model
         [StringLength(30, ErrorMessage = "Максимальная длина единицы измерения ингредиента - 30 символов.")]
         public string Unit { get; set; }
 
+        [ValidateNever]
         public List<RecipeIngredient> RecipeIngredients { get; set; } = [];
     }
 }

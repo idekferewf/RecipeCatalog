@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace RecipeCatalog.Model
 {
@@ -15,10 +16,13 @@ namespace RecipeCatalog.Model
         public int CategoryId { get; set; }
 
         [ForeignKey("CategoryId")]
+        [ValidateNever]
         public Category Category { get; set; }
 
+        [ValidateNever]
         public List<RecipeIngredient> RecipeIngredients { get; set; } = [];
 
+        [ValidateNever]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }
 }
