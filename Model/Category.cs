@@ -8,8 +8,8 @@ namespace RecipeCatalog.Model
 
         [Required(ErrorMessage = "Необходимо указать название категории.")]
         [StringLength(255, ErrorMessage = "Максимальная длина названия категории - 255 символов.")]
-        public required string Name { get; set; }
+        public string Name { get; set; }
 
-        public required List<Recipe> Recipes { get; set; } = [];
+        public List<Recipe> Recipes { get; set; } = [];
     }
 }

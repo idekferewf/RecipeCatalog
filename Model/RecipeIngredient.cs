@@ -8,19 +8,19 @@ namespace RecipeCatalog.Model
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Необходимо указать рецепт.")]
-        public required int RecipeId { get; set; }
+        public int RecipeId { get; set; }
 
         [ForeignKey("RecipeId")]
-        public required Recipe Recipe { get; set; }
+        public Recipe Recipe { get; set; }
 
         [Required(ErrorMessage = "Необходимо указать ингредиент.")]
-        public required int IngredientId { get; set; }
+        public int IngredientId { get; set; }
 
         [ForeignKey("IngredientId")]
-        public required Ingredient Ingredient { get; set; }
+        public Ingredient Ingredient { get; set; }
 
         [Required(ErrorMessage = "Необходимо указать количество ингредиента.")]
         [Column(TypeName = "decimal(6, 3)")]
-        public required decimal Quantity { get; set; }
+        public decimal Quantity { get; set; }
     }
 }
