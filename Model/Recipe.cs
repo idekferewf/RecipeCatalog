@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace RecipeCatalog.Model
 {
@@ -9,16 +10,19 @@ namespace RecipeCatalog.Model
 
         [Required(ErrorMessage = "Необходимо указать название рецепта.")]
         [StringLength(255, ErrorMessage = "Максимальная длина названия рецепта - 255 символов.")]
-        public required string Name { get; set; }
+        public string Name { get; set; }
 
         [Required(ErrorMessage = "Необходимо указать категорию рецепта.")]
-        public required int CategoryId { get; set; }
+        public int CategoryId { get; set; }
 
         [ForeignKey("CategoryId")]
-        public required Category Category { get; set; }
+        [ValidateNever]
+        public Category Category { get; set; }
 
-        public required List<RecipeIngredient> RecipeIngredients { get; set; } = [];
+        [ValidateNever]
+        public List<RecipeIngredient> RecipeIngredients { get; set; } = [];
 
-        public required DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        [ValidateNever]
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace RecipeCatalog.Model
 {
@@ -8,12 +9,13 @@ namespace RecipeCatalog.Model
 
         [Required(ErrorMessage = "Необходимо указать название ингредиента.")]
         [StringLength(255, ErrorMessage = "Максимальная длина названия ингредиента - 255 символов.")]
-        public required string Name { get; set; }
+        public string Name { get; set; }
 
         [Required(ErrorMessage = "Необходимо указать единицу измерения ингредиента.")]
         [StringLength(30, ErrorMessage = "Максимальная длина единицы измерения ингредиента - 30 символов.")]
-        public required string Unit { get; set; }
+        public string Unit { get; set; }
 
-        public required List<RecipeIngredient> RecipeIngredients { get; set; } = [];
+        [ValidateNever]
+        public List<RecipeIngredient> RecipeIngredients { get; set; } = [];
     }
 }
