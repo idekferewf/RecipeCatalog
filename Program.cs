@@ -11,6 +11,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("RecipeCatalogDb"))
 );
 
+// Add controllers service
+builder.Services.AddControllersWithViews();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -29,5 +32,10 @@ app.UseAuthorization();
 
 app.MapStaticAssets();
 app.MapRazorPages().WithStaticAssets();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller}/{action}/{id?}");
+app.MapControllers();
 
 app.Run();

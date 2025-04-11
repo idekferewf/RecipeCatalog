@@ -365,3 +365,9 @@ FodyWeavers.xsd
 # Local Files
 Migrations/
 RecipeCatalog.db
+
+# IntelliJ IDEA
+.idea/
+*.iws
+.idea_modules/
+out/
