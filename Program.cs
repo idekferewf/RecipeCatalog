@@ -33,4 +33,9 @@ app.UseAuthorization();
 app.MapStaticAssets();
 app.MapRazorPages().WithStaticAssets();
 
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller}/{action}/{id?}");
+app.MapControllers();
+
 app.Run();
