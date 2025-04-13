@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using RecipeCatalog.Model;
 using RecipeCatalog.Data;
@@ -53,6 +54,13 @@ public class RecipesController : Controller
         if (!ModelState.IsValid)
         {
             model.Categories = _context.Categories.ToList();
+            if (ModelState.TryGetValue("Recipe.CategoryId", out var entry)
+                && entry.ValidationState == ModelValidationState.Invalid)
+            {
+                ModelState.Remove("Recipe.CategoryId");
+                ModelState.AddModelError("Recipe.CategoryId", "Необходимо указать категорию.");
+            }
+
             return View(model);
         }
 
