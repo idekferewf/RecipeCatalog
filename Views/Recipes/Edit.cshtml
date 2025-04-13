@@ -1,3 +1,4 @@
+@using Microsoft.AspNetCore.Mvc.ModelBinding
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model RecipeCatalog.Controllers.RecipesController.RecipeEditViewModel
 @{
@@ -28,16 +29,22 @@
                asp-for="Recipe.Name"
                value="@Model.Recipe.Name"
                asp-invalid-class="is-invalid"
-               class="mt-2 form-control"
+               class="mt-2 form-control @(ViewData.ModelState["Recipe.Name"]?.ValidationState == ModelValidationState.Invalid ? "is-invalid" : "")"
                placeholder="Введите название рецепта"/>
+        <div class="invalid-feedback">
+            <span asp-validation-for="Recipe.Name" class="text-danger"></span>
+        </div>
         @* /Название *@
 
         @* Категория *@
         <label class="mt-3" asp-for="Recipe.CategoryId">Категория:</label>
         <select asp-for="Recipe.CategoryId" asp-items="@(new SelectList(Model.Categories, "Id", "Name"))"
-                class="mt-2 form-select">
+                class="mt-2 form-select @(ViewData.ModelState["Recipe.CategoryId"]?.ValidationState == ModelValidationState.Invalid ? "is-invalid" : "")">
             <option value="">Выберите категорию</option>
         </select>
+        <div class="invalid-feedback">
+            <span asp-validation-for="Recipe.CategoryId" class="text-danger"></span>
+        </div>
         @* /Категория *@
     </div>
     
