@@ -46,4 +46,27 @@ public class RecipesController : Controller
         };
         return View(model);
     }
+
+    [HttpPost]
+    public IActionResult Edit(RecipeEditViewModel model)
+    {
+        if (!ModelState.IsValid)
+        {
+            model.Categories = _context.Categories.ToList();
+            return View(model);
+        }
+
+        if (model.Recipe.Id == 0)
+        {
+            _context.Recipes.Add(model.Recipe);
+        }
+        else
+        {
+            _context.Recipes.Update(model.Recipe);
+        }
+
+        _context.SaveChanges();
+
+        return RedirectToAction("Edit", new { id = model.Recipe.Id });
+    }
 }
