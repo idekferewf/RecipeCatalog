@@ -77,4 +77,18 @@ public class RecipesController : Controller
 
         return RedirectToAction("Edit", new { id = model.Recipe.Id });
     }
+
+    [HttpPost]
+    public IActionResult Delete(RecipeEditViewModel model)
+    {
+        if (model.Recipe.Id == 0)
+        {
+            return NotFound();
+        }
+
+        _context.Recipes.Remove(model.Recipe);
+        _context.SaveChanges();
+
+        return RedirectToAction("Edit");
+    }
 }
