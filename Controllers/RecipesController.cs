@@ -21,6 +21,21 @@ public class RecipesController : Controller
         public List<Category> Categories { get; set; } = [];
     }
 
+    public class RecipesViewModel
+    {
+        public required List<Recipe> Recipes { get; set; }
+    }
+
+    [HttpGet]
+    public IActionResult Index()
+    {
+        RecipesViewModel model = new RecipesViewModel
+        {
+            Recipes = _context.Recipes.Include(r => r.Category).Include(r => r.RecipeIngredients).ToList()
+        };
+        return View(model);
+    }
+
     [HttpGet]
     public IActionResult Edit(int id = 0)
     {
