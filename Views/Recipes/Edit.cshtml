@@ -35,6 +35,20 @@
         </div>
         @* /Название *@
 
+        @* Описание *@
+        <label class="mt-3 mb-2" asp-for="Recipe.Description">Описание:</label>
+        <textarea
+            id="editor"
+            asp-for="Recipe.Description"
+            value="@Model.Recipe.Description"
+            class="form-control"
+            placeholder="Введите описание рецепта">
+        </textarea>
+        <div class="invalid-feedback d-block">
+            <span asp-validation-for="Recipe.Description" class="text-danger"></span>
+        </div>
+        @* /Описание *@
+
         @* Категория *@
         <label class="mt-3" asp-for="Recipe.CategoryId">Категория:</label>
         <select asp-for="Recipe.CategoryId" asp-items="@(new SelectList(Model.Categories, "Id", "Name"))"
