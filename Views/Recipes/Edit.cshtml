@@ -28,7 +28,6 @@
         <input type="text"
                asp-for="Recipe.Name"
                value="@Model.Recipe.Name"
-               asp-invalid-class="is-invalid"
                class="mt-2 form-control @(ViewData.ModelState["Recipe.Name"]?.ValidationState == ModelValidationState.Invalid ? "is-invalid" : "")"
                placeholder="Введите название рецепта"/>
         <div class="invalid-feedback">
