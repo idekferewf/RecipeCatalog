@@ -11,6 +11,9 @@ namespace RecipeCatalog.Model
         [Required(ErrorMessage = "Необходимо указать название рецепта.")]
         [StringLength(255, ErrorMessage = "Максимальная длина названия рецепта - 255 символов.")]
         public string Name { get; set; }
+        
+        [Required(ErrorMessage = "Необходимо указать описание рецепта.")]
+        public string Description { get; set; }
 
         [Required(ErrorMessage = "Необходимо указать категорию рецепта.")]
         public int CategoryId { get; set; }
