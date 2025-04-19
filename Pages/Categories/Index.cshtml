@@ -7,7 +7,7 @@
 <h2>Категории рецептов</h2>
 
 <p class="mt-1 d-flex justify-content-end">
-	<a class="btn btn-primary" href="@Url.Page("Category")">Добавить новую категорию</a>
+	<a class="btn btn-primary" asp-page="/Categories/Edit">Добавить новую категорию</a>
 </p>
 
 @if (Model.Categories.Count != 0)
@@ -38,11 +38,11 @@
 							</svg>
 						</button>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="@Url.Page("Category", new { id = category.Id })">
+							<a class="dropdown-item" asp-page="/Categories/Edit" asp-route-id="@category.Id">
 								Редактировать
 							</a>
-							<a class="dropdown-item btn-danger"
-							   href="@Url.Page("CategoryDelete", new { id = category.Id })">
+							<a class="dropdown-item btn-danger" asp-page="/Categories/Delete"
+							   asp-route-id="@category.Id">
 								Удалить
 							</a>
 						</div>

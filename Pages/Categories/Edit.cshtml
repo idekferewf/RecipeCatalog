@@ -27,7 +27,7 @@
 			<button type="submit" class="btn btn-primary">Сохранить</button>
 			@if (Model.Category.Id != 0)
 			{
-				<a class="btn btn-danger" href="@Url.Page("CategoryDelete", new { id = Model.Category.Id })">
+				<a class="btn btn-danger" asp-page="/Categories/Delete" asp-route-id="@Model.Category.Id">
 					Удалить
 				</a>
 			}
