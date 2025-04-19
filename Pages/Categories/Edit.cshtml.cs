@@ -16,12 +16,24 @@ public class CategoryModel : PageModel
 
     [BindProperty] public Category? Category { get; set; }
 
-    public void OnGet(int id)
+    public IActionResult OnGet(int id)
     {
         if (id > 0)
-            Category = _context.Categories.FirstOrDefault(c => c.Id == id);
+        {
+            Category? category = _context.Categories.FirstOrDefault(c => c.Id == id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+            Category = category;
+        }
         else
+        {
             Category = new Category { Name = "", Recipes = new List<Recipe>() };
+        }
+
+        return Page();
     }
 
     public IActionResult OnPost()
