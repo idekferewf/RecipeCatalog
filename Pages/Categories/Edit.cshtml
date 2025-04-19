@@ -24,7 +24,7 @@
 		<input type="text" asp-for="Category.Name"
 		       class="mt-2 form-control @(ViewData.ModelState["Category.Name"]?.ValidationState == ModelValidationState.Invalid ? "is-invalid" : "")"
 		       placeholder="Введите название категории"/>
-		<div class="invalid-feedback d-block mt-2">
+		<div class="invalid-feedback d-block">
 			<span asp-validation-for="Category.Name" class="text-danger"></span>
 		</div>
 	</div>
