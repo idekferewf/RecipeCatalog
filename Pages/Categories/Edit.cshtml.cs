@@ -38,6 +38,9 @@ public class CategoryModel : PageModel
 
     public IActionResult OnPost()
     {
+        if (!ModelState.IsValid)
+            return Page();
+
         if (Category.Id == 0)
             _context.Categories.Add(Category);
         else
