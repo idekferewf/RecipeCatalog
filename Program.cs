@@ -5,7 +5,8 @@ using RecipeCatalog.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages(options => options.Conventions.ConfigureFilter(new AutoValidateAntiforgeryTokenAttribute()));
+builder.Services.AddRazorPages(options =>
+    options.Conventions.ConfigureFilter(new AutoValidateAntiforgeryTokenAttribute()));
 
 // Connect database
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -35,8 +36,8 @@ app.MapStaticAssets();
 app.MapRazorPages().WithStaticAssets();
 
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    "default",
+    "{controller=Home}/{action=Index}/{id?}");
 app.MapControllers();
 
 app.Run();

@@ -1,0 +1,40 @@
+@page "{id:int?}"
+@using Microsoft.AspNetCore.Mvc.ModelBinding
+@model CategoryModel
+@{
+	bool isExists = Model.Category.Id != 0;
+	if (isExists)
+	{
+		ViewData["Title"] = Model.Category.Name;
+	}
+	else
+	{
+		ViewData["Title"] = "Добавить категорию";
+	}
+}
+
+<h2>
+	@(!isExists ? "Добавить новую категорию" : "Редактировать категорию")
+</h2>
+
+<form method="post" class="mt-4">
+	<input type="hidden" asp-for="Category.Id"/>
+	<div class="form-group">
+		<label asp-for="Category.Name">Название категории:</label>
+		<input type="text" asp-for="Category.Name"
+		       class="mt-2 form-control @(ViewData.ModelState["Category.Name"]?.ValidationState == ModelValidationState.Invalid ? "is-invalid" : "")"
+		       placeholder="Введите название категории"/>
+		<div class="invalid-feedback d-block">
+			<span asp-validation-for="Category.Name" class="text-danger"></span>
+		</div>
+	</div>
+	<div class="mt-3 d-flex gap-1">
+		<button type="submit" class="btn btn-primary">Сохранить</button>
+		@if (isExists)
+		{
+			<a class="btn btn-danger" asp-page="/Categories/Delete" asp-route-id="@Model.Category.Id">
+				Удалить
+			</a>
+		}
+	</div>
+</form>
