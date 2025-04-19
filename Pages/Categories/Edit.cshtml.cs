@@ -14,7 +14,7 @@ public class CategoryModel : PageModel
         _context = context;
     }
 
-    [BindProperty] public Category? Category { get; set; }
+    [BindProperty] public required Category Category { get; set; }
 
     public IActionResult OnGet(int id)
     {
@@ -38,14 +38,11 @@ public class CategoryModel : PageModel
 
     public IActionResult OnPost()
     {
-        if (Category != null)
-        {
-            if (Category.Id == 0)
-                _context.Categories.Add(Category);
-            else
-                _context.Categories.Update(Category);
-            _context.SaveChanges();
-        }
+        if (Category.Id == 0)
+            _context.Categories.Add(Category);
+        else
+            _context.Categories.Update(Category);
+        _context.SaveChanges();
 
         return RedirectToPage("Index");
     }
