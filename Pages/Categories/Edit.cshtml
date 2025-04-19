@@ -17,6 +17,7 @@
 </h2>
 
 <form method="post" class="mt-4">
+	<input type="hidden" asp-for="Category.Id"/>
 	<div class="form-group">
 		<label for="Name">Название категории:</label>
 		<input type="text" id="Name" name="Name" value="@Model.Category.Name" required class="mt-2 form-control"
