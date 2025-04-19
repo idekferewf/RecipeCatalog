@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RecipeCatalog.Data;
+using RecipeCatalog.Model;
 
 namespace RecipeCatalog.Pages.Categories;
 
@@ -15,7 +16,7 @@ public class CategoryDeleteModel : PageModel
 
     public IActionResult OnGet(int id)
     {
-        var category = _context.Categories.FirstOrDefault(b => b.Id == id);
+        Category? category = _context.Categories.FirstOrDefault(b => b.Id == id);
         if (category != null)
         {
             _context.Categories.Remove(category);
