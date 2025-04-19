@@ -17,11 +17,13 @@ public class CategoryDeleteModel : PageModel
     public IActionResult OnGet(int id)
     {
         Category? category = _context.Categories.FirstOrDefault(b => b.Id == id);
-        if (category != null)
+        if (category == null)
         {
-            _context.Categories.Remove(category);
-            _context.SaveChanges();
+            return NotFound();
         }
+
+        _context.Categories.Remove(category);
+        _context.SaveChanges();
 
         return RedirectToPage("Index");
     }
