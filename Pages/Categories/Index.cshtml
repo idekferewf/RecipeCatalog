@@ -10,9 +10,9 @@
 	<a class="btn btn-primary" href="@Url.Page("Category")">Добавить новую категорию</a>
 </p>
 
-@if (Model.Categories != null)
+@if (Model.Categories.Count != 0)
 {
-	<p class="mt-1 text-secondary">Всего категорий: @Model.Categories.Count()</p>
+	<p class="mt-1 text-secondary">Всего категорий: @Model.Categories.Count</p>
 	<table class="table mt-1">
 		<thead>
 		<tr>
@@ -25,7 +25,7 @@
 		{
 			<tr style="height:70px" class="align-middle">
 				<td>@category.Name</td>
-				<td>@category.Recipes.Count()</td>
+				<td>@category.Recipes.Count</td>
 				<td>
 					<div class="dropdown mt-1">
 						<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
