@@ -14,7 +14,7 @@ public class CategoriesModel : PageModel
         _context = context;
     }
 
-    public List<Category>? Categories { get; set; }
+    public required List<Category> Categories { get; set; }
 
     public void OnGet()
     {
