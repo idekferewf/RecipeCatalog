@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using RecipeCatalog.Data;
 using RecipeCatalog.Model;
 
-namespace RecipeCatalog.Pages
+namespace RecipeCatalog.Pages.Categories
 {
     public class CategoriesModel : PageModel
     {
