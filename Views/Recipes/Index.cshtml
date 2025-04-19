@@ -60,12 +60,10 @@
                     <div class="card-footer d-flex gap-2 justify-content-end">
                         <a asp-controller="Recipes" asp-action="Edit" asp-route-id="@recipe.Id"
                            class="btn btn-primary">Изменить</a>
-                        <form method="post" asp-controller="Recipes" asp-action="Delete" asp-route-id="@recipe.Id">
-                            <button type="submit" class="btn btn-danger"
-                                    onclick="return confirm('Вы действительно желаете удалить рецепт?')">
-                                Удалить
-                            </button>
-                        </form>
+                        <a asp-controller="Recipes" asp-action="Delete" asp-route-id="@recipe.Id" class="btn btn-danger"
+                           onclick="return confirm('Вы действительно желаете удалить рецепт?')">
+                            Удалить
+                        </a>
                     </div>
                 </div>
             </div>

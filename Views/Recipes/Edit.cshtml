@@ -65,7 +65,10 @@
         <button asp-action="Edit" type="submit" class="btn btn-primary">Сохранить</button>
         @if (Model.Recipe.Id != 0)
         {
-            <button asp-action="Delete" type="submit" class="btn btn-danger">Удалить</button>
+            <a asp-controller="Recipes" asp-action="Delete" asp-route-id="@Model.Recipe.Id" class="btn btn-danger"
+               onclick="return confirm('Вы действительно желаете удалить рецепт?')">
+                Удалить
+            </a>
         }
     </div>
 </form>
