@@ -23,6 +23,6 @@ public class CategoryDeleteModel : PageModel
             _context.SaveChanges();
         }
 
-        return RedirectToPage("Categories");
+        return RedirectToPage("Index");
     }
 }

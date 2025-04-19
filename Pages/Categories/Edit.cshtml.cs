@@ -35,6 +35,6 @@ public class CategoryModel : PageModel
             _context.SaveChanges();
         }
 
-        return RedirectToPage("Categories");
+        return RedirectToPage("Index");
     }
 }
