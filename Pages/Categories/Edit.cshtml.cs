@@ -3,47 +3,38 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using RecipeCatalog.Data;
 using RecipeCatalog.Model;
 
-namespace RecipeCatalog.Pages.Categories
+namespace RecipeCatalog.Pages.Categories;
+
+public class CategoryModel : PageModel
 {
-    public class CategoryModel : PageModel
+    private readonly ApplicationDbContext _context;
+
+    public CategoryModel(ApplicationDbContext context)
     {
-        private readonly ApplicationDbContext _context;
+        _context = context;
+    }
 
-        [BindProperty]
-        public Category? Category { get; set; }
+    [BindProperty] public Category? Category { get; set; }
 
-        public CategoryModel(ApplicationDbContext context)
+    public void OnGet(int id)
+    {
+        if (id > 0)
+            Category = _context.Categories.FirstOrDefault(c => c.Id == id);
+        else
+            Category = new Category { Name = "", Recipes = new List<Recipe>() };
+    }
+
+    public IActionResult OnPost()
+    {
+        if (Category != null)
         {
-            _context = context;
-        }
-
-        public void OnGet(int id)
-        {
-            if (id > 0)
-            {
-                Category = _context.Categories.FirstOrDefault(c => c.Id == id);
-            }
+            if (Category.Id == 0)
+                _context.Categories.Add(Category);
             else
-            {
-                Category = new Category() { Name = "", Recipes = new List<Recipe>() };
-            }
+                _context.Categories.Update(Category);
+            _context.SaveChanges();
         }
 
-        public IActionResult OnPost()
-        {
-            if (Category != null)
-            {
-                if (Category.Id == 0)
-                {
-                    _context.Categories.Add(Category);
-                }
-                else
-                {
-                    _context.Categories.Update(Category);
-                }
-                _context.SaveChanges();
-            }
-            return RedirectToPage("Categories");
-        }
+        return RedirectToPage("Categories");
     }
 }

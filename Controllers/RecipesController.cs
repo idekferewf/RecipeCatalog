@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
-using RecipeCatalog.Model;
 using RecipeCatalog.Data;
+using RecipeCatalog.Model;
 
 namespace RecipeCatalog.Controllers;
 
@@ -15,21 +15,10 @@ public class RecipesController : Controller
         _context = context;
     }
 
-    public class RecipeEditViewModel
-    {
-        public required Recipe Recipe { get; set; }
-        public List<Category> Categories { get; set; } = [];
-    }
-
-    public class RecipesViewModel
-    {
-        public required List<Recipe> Recipes { get; set; }
-    }
-
     [HttpGet]
     public IActionResult Index()
     {
-        RecipesViewModel model = new RecipesViewModel
+        var model = new RecipesViewModel
         {
             Recipes = _context.Recipes.Include(r => r.Category).Include(r => r.RecipeIngredients).ToList()
         };
@@ -49,13 +38,10 @@ public class RecipesController : Controller
             recipe = _context.Recipes
                 .Include(r => r.Category)
                 .FirstOrDefault(r => r.Id == id);
-            if (recipe == null)
-            {
-                return NotFound();
-            }
+            if (recipe == null) return NotFound();
         }
 
-        RecipeEditViewModel model = new RecipeEditViewModel
+        var model = new RecipeEditViewModel
         {
             Recipe = recipe,
             Categories = _context.Categories.ToList()
@@ -80,13 +66,9 @@ public class RecipesController : Controller
         }
 
         if (model.Recipe.Id == 0)
-        {
             _context.Recipes.Add(model.Recipe);
-        }
         else
-        {
             _context.Recipes.Update(model.Recipe);
-        }
 
         _context.SaveChanges();
 
@@ -96,20 +78,25 @@ public class RecipesController : Controller
     [HttpGet]
     public IActionResult Delete(int id = 0)
     {
-        if (id == 0)
-        {
-            return NotFound();
-        }
+        if (id == 0) return NotFound();
 
-        Recipe? recipe = _context.Recipes.FirstOrDefault(r => r.Id == id);
-        if (recipe == null)
-        {
-            return NotFound();
-        }
+        var recipe = _context.Recipes.FirstOrDefault(r => r.Id == id);
+        if (recipe == null) return NotFound();
 
         _context.Recipes.Remove(recipe);
         _context.SaveChanges();
 
         return RedirectToAction("Index");
+    }
+
+    public class RecipeEditViewModel
+    {
+        public required Recipe Recipe { get; set; }
+        public List<Category> Categories { get; set; } = [];
+    }
+
+    public class RecipesViewModel
+    {
+        public required List<Recipe> Recipes { get; set; }
     }
 }

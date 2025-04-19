@@ -1,5 +1,5 @@
 @page
-@model RecipeCatalog.Pages.Categories.CategoriesModel
+@model CategoriesModel
 @{
 	ViewData["Title"] = "Список категорий";
 }
@@ -15,39 +15,41 @@
 	<p class="mt-1 text-secondary">Всего категорий: @Model.Categories.Count()</p>
 	<table class="table mt-1">
 		<thead>
-			<tr>
-				<th>Название</th>
-				<th>Кол-во рецептов</th>
-				<th class="opacity-0">Действия</th>
+		<tr>
+			<th>Название</th>
+			<th>Кол-во рецептов</th>
+			<th class="opacity-0">Действия</th>
 		</thead>
 		<tbody class="table-group-divider">
-			@foreach (var category in Model.Categories)
-			{
-				<tr style="height:70px" class="align-middle">
-					<td>@category.Name</td>
-					<td>@category.Recipes.Count()</td>
-					<td>
-						<div class="dropdown mt-1">
-							<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-								aria-expanded="false">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots"
-									viewBox="0 0 16 16">
-									<path
-										d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
-								</svg>
-							</button>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="@Url.Page("Category", new { id = category.Id })">
-									Редактировать
-								</a>
-								<a class="dropdown-item btn-danger" href="@Url.Page("CategoryDelete", new { id = category.Id })">
-									Удалить
-								</a>
-							</div>
+		@foreach (var category in Model.Categories)
+		{
+			<tr style="height:70px" class="align-middle">
+				<td>@category.Name</td>
+				<td>@category.Recipes.Count()</td>
+				<td>
+					<div class="dropdown mt-1">
+						<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+						        aria-expanded="false">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							     class="bi bi-three-dots"
+							     viewBox="0 0 16 16">
+								<path
+									d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+							</svg>
+						</button>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="@Url.Page("Category", new { id = category.Id })">
+								Редактировать
+							</a>
+							<a class="dropdown-item btn-danger"
+							   href="@Url.Page("CategoryDelete", new { id = category.Id })">
+								Удалить
+							</a>
 						</div>
-					</td>
-				</tr>
-			}
+					</div>
+				</td>
+			</tr>
+		}
 		</tbody>
 	</table>
 }

@@ -3,22 +3,21 @@ using Microsoft.EntityFrameworkCore;
 using RecipeCatalog.Data;
 using RecipeCatalog.Model;
 
-namespace RecipeCatalog.Pages.Categories
+namespace RecipeCatalog.Pages.Categories;
+
+public class CategoriesModel : PageModel
 {
-    public class CategoriesModel : PageModel
+    private readonly ApplicationDbContext _context;
+
+    public CategoriesModel(ApplicationDbContext context)
     {
-        private readonly ApplicationDbContext _context;
+        _context = context;
+    }
 
-        public List<Category>? Categories { get; set; }
+    public List<Category>? Categories { get; set; }
 
-        public CategoriesModel(ApplicationDbContext context)
-        {
-            _context = context;
-        }
-
-        public void OnGet()
-        {
-            Categories = _context.Categories.Include(c => c.Recipes).ToList();
-        }
+    public void OnGet()
+    {
+        Categories = _context.Categories.Include(c => c.Recipes).ToList();
     }
 }
