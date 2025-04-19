@@ -93,17 +93,23 @@ public class RecipesController : Controller
         return RedirectToAction("Edit", new { id = model.Recipe.Id });
     }
 
-    [HttpPost]
-    public IActionResult Delete(RecipeEditViewModel model)
+    [HttpGet]
+    public IActionResult Delete(int id = 0)
     {
-        if (model.Recipe.Id == 0)
+        if (id == 0)
         {
             return NotFound();
         }
 
-        _context.Recipes.Remove(model.Recipe);
+        Recipe? recipe = _context.Recipes.FirstOrDefault(r => r.Id == id);
+        if (recipe == null)
+        {
+            return NotFound();
+        }
+
+        _context.Recipes.Remove(recipe);
         _context.SaveChanges();
 
-        return RedirectToAction("Edit");
+        return RedirectToAction("Index");
     }
 }
