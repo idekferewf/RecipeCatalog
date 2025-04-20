@@ -68,3 +68,34 @@
 </body>
 
 </html>
+
+<script>
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    // установка начальной темы и состояния чекбокса
+    html.setAttribute("data-bs-theme", prefersDark ? "dark" : "light");
+    updateCheckboxState();
+
+    // отслеживание изменения темы в системе
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", e => {
+        html.setAttribute("data-bs-theme", e.matches ? "dark" : "light");
+        updateCheckboxState();
+    });
+
+    // обработчик клика на чекбокс
+    themeToggle.addEventListener('change', toggleTheme);
+
+    // функция переключения темы
+    function toggleTheme() {
+        const currentTheme = html.getAttribute("data-bs-theme");
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
+        html.setAttribute("data-bs-theme", newTheme);
+        updateCheckboxState();
+    }
+
+    function updateCheckboxState() {
+        themeToggle.checked = html.getAttribute("data-bs-theme") === "dark";
+    }
+</script>
