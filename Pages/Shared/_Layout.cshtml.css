@@ -47,3 +47,148 @@ button.accept-policy {
     white-space: nowrap;
     line-height: 60px;
 }
+
+.toggle--checkbox {
+    display: none;
+}
+
+.toggle--checkbox:checked + .toggle--label {
+    background: #6b7abb;
+    border-color: #5d6baa;
+}
+
+.toggle--checkbox:checked + .toggle--label .toggle--label-background {
+    left: 21px;
+    width: 2px;
+}
+
+.toggle--checkbox:checked + .toggle--label .toggle--label-background:before {
+    width: 2px;
+    height: 2px;
+    top: -8px;
+}
+
+.toggle--checkbox:checked + .toggle--label .toggle--label-background:after {
+    width: 2px;
+    height: 2px;
+    left: -11px;
+    top: 7px;
+}
+
+.toggle--checkbox:checked + .toggle--label:before {
+    background: #fff;
+    border-color: #e8e8ea;
+    animation-name: switch;
+    animation-duration: 350ms;
+    animation-fill-mode: forwards;
+}
+
+.toggle--checkbox:checked + .toggle--label:after {
+    transition-delay: 350ms;
+    opacity: 1;
+}
+
+.toggle--label {
+    width: 70px;
+    height: 35px;
+    background: #96dcee;
+    border-radius: 35px;
+    border: 2px solid #72cce3;
+    display: flex;
+    position: relative;
+    transition: all 350ms ease-in;
+}
+
+.toggle--label-background {
+    width: 4px;
+    height: 2px;
+    border-radius: 2px;
+    position: relative;
+    background: #fff;
+    left: 47px;
+    top: 16px;
+    transition: all 150ms ease-in;
+}
+
+.toggle--label-background:before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    width: 14px;
+    height: 2px;
+    border-radius: 2px;
+    background: #fff;
+    left: -7px;
+    transition: all 150ms ease-in;
+}
+
+.toggle--label-background:after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    width: 14px;
+    height: 2px;
+    border-radius: 2px;
+    background: #fff;
+    left: -4px;
+    transition: all 150ms ease-in;
+}
+
+.toggle--label:before {
+    animation-name: reverse;
+    animation-duration: 350ms;
+    animation-fill-mode: forwards;
+    transition: all 350ms ease-in;
+    content: "";
+    width: 29px;
+    height: 29px;
+    border: 2px solid #f5eb71;
+    top: 1px;
+    left: 1px;
+    position: absolute;
+    border-radius: 29px;
+    background: #fffaa8;
+}
+
+.toggle--label:after {
+    transition-delay: 0ms;
+    transition: all 250ms ease-in;
+    position: absolute;
+    content: "";
+    box-shadow: #e8e8ea -4px 0 0 1px, #e8e8ea -8px 5px 0 -1px;
+    left: 50px;
+    top: 8px;
+    width: 4px;
+    height: 4px;
+    background: transparent;
+    border-radius: 50%;
+    opacity: 0;
+}
+
+@keyframes switch {
+    0% {
+        left: 1px;
+    }
+    60% {
+        left: 1px;
+        width: 39px;
+    }
+    100% {
+        left: 36px;
+        width: 29px;
+    }
+}
+
+@keyframes reverse {
+    0% {
+        left: 36px;
+        width: 29px;
+    }
+    60% {
+        left: 25px;
+        width: 39px;
+    }
+    100% {
+        left: 1px;
+    }
+}

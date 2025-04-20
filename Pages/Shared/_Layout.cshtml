@@ -13,7 +13,8 @@
 
 <body>
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3"
+         style="background-color:var(--bs-body-bg)">
         <div class="container">
             <a class="navbar-brand" asp-area="" asp-page="/Index">Каталог рецептов</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
@@ -23,14 +24,22 @@
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Index">Главная</a>
+                        <a class="nav-link" asp-area="" asp-page="/Index">Главная</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Categories/Index">Категории</a>
+                        <a class="nav-link" asp-area="" asp-page="/Categories/Index">Категории</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Recipes"
+                        <a class="nav-link" asp-area="" asp-controller="Recipes"
                            asp-action="Index">Рецепты</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <input type="checkbox" id="themeToggle" checked class="toggle--checkbox">
+                        <label for="themeToggle" class="toggle--label">
+                            <span class="toggle--label-background"></span>
+                        </label>
                     </li>
                 </ul>
             </div>
@@ -43,9 +52,12 @@
     </main>
 </div>
 
-<footer class="border-top footer text-muted">
+<footer class="py-4 border-top footer text-muted">
     <div class="container">
-        &copy; 2025 - Каталог рецептов - <a asp-area="" asp-page="/Privacy">Конфиденциальность</a>
+        <div class="d-flex flex-wrap gap-1" style="line-height:1.3">
+            <span>&copy; 2025 - Каталог рецептов -</span>
+            <a asp-area="" asp-page="/Privacy">Конфиденциальность</a>
+        </div>
     </div>
 </footer>
 
@@ -57,3 +69,34 @@
 </body>
 
 </html>
+
+<script>
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    // установка начальной темы и состояния чекбокса
+    html.setAttribute("data-bs-theme", prefersDark ? "dark" : "light");
+    updateCheckboxState();
+
+    // отслеживание изменения темы в системе
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", e => {
+        html.setAttribute("data-bs-theme", e.matches ? "dark" : "light");
+        updateCheckboxState();
+    });
+
+    // обработчик клика на чекбокс
+    themeToggle.addEventListener('change', toggleTheme);
+
+    // функция переключения темы
+    function toggleTheme() {
+        const currentTheme = html.getAttribute("data-bs-theme");
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
+        html.setAttribute("data-bs-theme", newTheme);
+        updateCheckboxState();
+    }
+
+    function updateCheckboxState() {
+        themeToggle.checked = html.getAttribute("data-bs-theme") === "dark";
+    }
+</script>
