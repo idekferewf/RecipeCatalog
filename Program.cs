@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages(options =>
     options.Conventions.ConfigureFilter(new AutoValidateAntiforgeryTokenAttribute()));
+builder.Services.AddHttpContextAccessor();
 
 // Connect database
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
