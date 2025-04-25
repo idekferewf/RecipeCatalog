@@ -1,3 +1,4 @@
+using Ganss.Xss;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
@@ -64,6 +65,9 @@ public class RecipesController : Controller
 
             return View(model);
         }
+
+        HtmlSanitizer sanitizer = new HtmlSanitizer();
+        model.Recipe.Description = sanitizer.Sanitize(model.Recipe.Description);
 
         if (model.Recipe.Id == 0)
             _context.Recipes.Add(model.Recipe);
