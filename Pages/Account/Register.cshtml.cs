@@ -39,7 +39,7 @@ public class Register : PageModel
             await _context.SaveChangesAsync();
 
             await Authenticate(Input.Email);
-            return RedirectToPage("Index");
+            return RedirectToPage("/Index");
         }
 
         ModelState.AddModelError(string.Empty, "Пользователь с данной электронной почтой уже зарегистрирован.");
