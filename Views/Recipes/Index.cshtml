@@ -59,13 +59,38 @@
 
                     </div>
 
-                    <div class="card-footer d-flex gap-2 justify-content-end">
+                    <div class="card-footer d-flex flex-wrap gap-2 justify-content-end">
+                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                                data-bs-target="#description_@recipe.Id">
+                            Открыть описание
+                        </button>
                         <a asp-controller="Recipes" asp-action="Edit" asp-route-id="@recipe.Id"
                            class="btn btn-primary">Изменить</a>
                         <a asp-controller="Recipes" asp-action="Delete" asp-route-id="@recipe.Id" class="btn btn-danger"
                            onclick="return confirm('Вы действительно желаете удалить рецепт?')">
                             Удалить
                         </a>
+                    </div>
+
+                    <div class="modal fade" id="description_@recipe.Id" tabindex="-1" aria-labelledby="descriptionLabel_@recipe.Id"
+                         aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="descriptionLabel_@recipe.Id">@recipe.Name</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    @Html.Raw(recipe.Description)
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                        Закрыть
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
