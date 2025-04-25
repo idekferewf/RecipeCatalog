@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using RecipeCatalog.Model;
+using RecipeCatalog.Model.Auth;
 
 namespace RecipeCatalog.Data;
 
@@ -17,4 +18,5 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<RecipeIngredient>
         RecipeIngredients { get; set; } // таблица RecipeIngredient, связующая таблицы Recipe и Ingredient.
+    public DbSet<User> Users { get; set; }
 }
