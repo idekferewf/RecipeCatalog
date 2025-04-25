@@ -5,13 +5,14 @@ namespace RecipeCatalog.Model.Auth;
 public class Register
 {
     [Required(ErrorMessage = "Необходимо указать электронную почту.")]
-    public string Email { get; set; }
+    public required string Email { get; set; }
 
     [Required(ErrorMessage = "Необходимо указать пароль.")]
     [DataType(DataType.Password)]
-    public string Password { get; set; }
+    public required string Password { get; set; }
 
     [DataType(DataType.Password)]
+    [Required(ErrorMessage = "Необходимо повторно указать пароль.")]
     [Compare("Password", ErrorMessage = "Пароли не совпадают.")]
-    public string ConfirmPassword { get; set; }
+    public required string ConfirmPassword { get; set; }
 }
