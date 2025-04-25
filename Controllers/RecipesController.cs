@@ -18,7 +18,7 @@ public class RecipesController : Controller
     [HttpGet]
     public IActionResult Index()
     {
-        var model = new RecipesViewModel
+        RecipesViewModel model = new RecipesViewModel
         {
             Recipes = _context.Recipes.Include(r => r.Category).Include(r => r.RecipeIngredients).ToList()
         };
@@ -41,7 +41,7 @@ public class RecipesController : Controller
             if (recipe == null) return NotFound();
         }
 
-        var model = new RecipeEditViewModel
+        RecipeEditViewModel model = new RecipeEditViewModel
         {
             Recipe = recipe,
             Categories = _context.Categories.ToList()
@@ -80,7 +80,7 @@ public class RecipesController : Controller
     {
         if (id == 0) return NotFound();
 
-        var recipe = _context.Recipes.FirstOrDefault(r => r.Id == id);
+        Recipe? recipe = _context.Recipes.FirstOrDefault(r => r.Id == id);
         if (recipe == null) return NotFound();
 
         _context.Recipes.Remove(recipe);
