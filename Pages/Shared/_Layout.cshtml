@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@inject IHttpContextAccessor HttpContextAccessor
+@{
+    var user = HttpContextAccessor.HttpContext?.User;
+    var isAuthenticated = user?.Identity?.IsAuthenticated ?? false;
+}
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -34,7 +40,14 @@
                            asp-action="Index">Рецепты</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav">
+                <ul class="navbar-nav align-items-center">
+                    @if (!isAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Account/Register">Регистрация</a>
+                        </li>
+                    }
+                    <li class="nav-item text-secondary-emphasis ms-2 me-3">|</li>
                     <li class="nav-item">
                         <input type="checkbox" id="themeToggle" checked class="toggle--checkbox">
                         <label for="themeToggle" class="toggle--label">
