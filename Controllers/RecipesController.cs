@@ -76,7 +76,7 @@ public class RecipesController : Controller
 
         _context.SaveChanges();
 
-        return RedirectToAction("Edit", new { id = model.Recipe.Id });
+        return RedirectToAction("Index");
     }
 
     [HttpGet]
