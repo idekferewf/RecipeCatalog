@@ -40,7 +40,7 @@
                            asp-action="Index">Рецепты</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav align-items-center">
+                <ul class="navbar-nav">
                     @if (!isAuthenticated)
                     {
                         <li class="nav-item">
@@ -50,8 +50,8 @@
                             <a class="nav-link" asp-page="/Account/Register">Регистрация</a>
                         </li>
                     }
-                    <li class="nav-item text-secondary-emphasis ms-2 me-3">|</li>
-                    <li class="nav-item">
+                    <li class="d-none d-md-inline-block nav-item text-muted ps-2 pe-3 py-2">|</li>
+                    <li class="nav-item d-flex align-items-center pt-2 pt-md-0">
                         <input type="checkbox" id="themeToggle" checked class="toggle--checkbox">
                         <label for="themeToggle" class="toggle--label">
                             <span class="toggle--label-background"></span>
