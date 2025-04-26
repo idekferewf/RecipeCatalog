@@ -24,7 +24,9 @@
 		@foreach (var category in Model.Categories)
 		{
 			<tr style="height:70px" class="align-middle">
-				<td class="text-truncate" style="max-width:150px">@category.Name</td>
+				<td class="text-truncate" style="max-width:150px">
+					<a asp-page="/Categories/Edit" asp-route-id="@category.Id">@category.Name</a>
+				</td>
 				<td>@category.Recipes.Count</td>
 				<td>
 					<div class="dropdown mt-1">
