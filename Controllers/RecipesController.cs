@@ -33,7 +33,7 @@ public class RecipesController : Controller
         Recipe? recipe;
         if (id == 0)
         {
-            recipe = new Recipe();
+            recipe = new Recipe { Name = "", Description = "", Category = new Category { Name = "" } };
         }
         else
         {
