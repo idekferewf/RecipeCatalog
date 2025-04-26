@@ -30,7 +30,7 @@ public class CategoryModel : PageModel
         }
         else
         {
-            Category = new Category { Name = "", Recipes = new List<Recipe>() };
+            Category = new Category { Name = "" };
         }
 
         return Page();

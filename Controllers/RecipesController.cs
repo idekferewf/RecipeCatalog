@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using RecipeCatalog.Data;
 using RecipeCatalog.Model;
+using RecipeCatalog.Model.Recipes;
 
 namespace RecipeCatalog.Controllers;
 
@@ -32,7 +33,7 @@ public class RecipesController : Controller
         Recipe? recipe;
         if (id == 0)
         {
-            recipe = new Recipe();
+            recipe = new Recipe { Name = "", Description = "", Category = new Category { Name = "" } };
         }
         else
         {
@@ -76,7 +77,7 @@ public class RecipesController : Controller
 
         _context.SaveChanges();
 
-        return RedirectToAction("Edit", new { id = model.Recipe.Id });
+        return RedirectToAction("Index");
     }
 
     [HttpGet]
@@ -91,16 +92,5 @@ public class RecipesController : Controller
         _context.SaveChanges();
 
         return RedirectToAction("Index");
-    }
-
-    public class RecipeEditViewModel
-    {
-        public required Recipe Recipe { get; set; }
-        public List<Category> Categories { get; set; } = [];
-    }
-
-    public class RecipesViewModel
-    {
-        public required List<Recipe> Recipes { get; set; }
     }
 }

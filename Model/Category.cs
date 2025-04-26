@@ -9,7 +9,7 @@ public class Category
 
     [Required(ErrorMessage = "Необходимо указать название категории.")]
     [StringLength(255, ErrorMessage = "Максимальная длина названия категории - 255 символов.")]
-    public string Name { get; set; }
+    public required string Name { get; set; }
 
     [ValidateNever] public List<Recipe> Recipes { get; set; } = [];
 }

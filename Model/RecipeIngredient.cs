@@ -13,14 +13,14 @@ public class RecipeIngredient
 
     [ForeignKey("RecipeId")]
     [ValidateNever]
-    public Recipe Recipe { get; set; }
+    public required Recipe Recipe { get; set; }
 
     [Required(ErrorMessage = "Необходимо указать ингредиент.")]
     public int IngredientId { get; set; }
 
     [ForeignKey("IngredientId")]
     [ValidateNever]
-    public Ingredient Ingredient { get; set; }
+    public required Ingredient Ingredient { get; set; }
 
     [Required(ErrorMessage = "Необходимо указать количество ингредиента.")]
     [Column(TypeName = "decimal(6, 3)")]
