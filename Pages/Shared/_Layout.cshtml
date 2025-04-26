@@ -2,6 +2,7 @@
 @{
     var user = HttpContextAccessor.HttpContext?.User;
     var isAuthenticated = user?.Identity?.IsAuthenticated ?? false;
+    var username = user?.Identity?.Name ?? "";
 }
 
 <!DOCTYPE html>
@@ -48,6 +49,19 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-page="/Account/Register">Регистрация</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                                @username
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li>
+                                    <a class="dropdown-item" asp-page="/Account/Logout">Выход</a>
+                                </li>
+                            </ul>
                         </li>
                     }
                     <li class="d-none d-md-inline-block nav-item text-muted ps-2 pe-3 py-2">|</li>
