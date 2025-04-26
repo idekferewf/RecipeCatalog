@@ -1,0 +1,49 @@
+﻿@page "{id:int?}"
+@model RecipeCatalog.Pages.Account.ProfileModel
+@{
+    ViewData["Title"] = "Профиль";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card mt-3">
+            <div class="card-body">
+                <h5 class="card-title">Добро пожаловать, @Model.CurrentUser.Email!</h5>
+                <form method="post" class="mt-3">
+                    @if (Model.IsAdmin)
+                    {
+                        <input type="hidden" asp-for="CurrentUser.Id" />
+                        <input type="hidden" asp-for="CurrentUser.Password" />
+                    }
+
+                    <div class="mb-3">
+                        <label asp-for="CurrentUser.Email">Email:</label>
+                        <input asp-for="CurrentUser.Email" class="mt-1 form-control" readonly />
+                    </div>
+
+                    <div>
+                        <label asp-for="CurrentUser.Role" class="mb-1">Роль:</label>
+                        @if (Model.IsAdmin)
+                        {
+                            <select asp-for="CurrentUser.Role" class="form-select">
+                                <option>User</option>
+                                <option>Admin</option>
+                            </select>
+                        }
+                        else
+                        {
+                            <input asp-for="CurrentUser.Role" class="form-control" readonly />
+                        }
+                    </div>
+
+                    @if (Model.IsAdmin)
+                    {
+                        <div class="mt-3 d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+                        </div>
+                    }
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
