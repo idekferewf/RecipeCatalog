@@ -9,11 +9,11 @@ public class Ingredient
 
     [Required(ErrorMessage = "Необходимо указать название ингредиента.")]
     [StringLength(255, ErrorMessage = "Максимальная длина названия ингредиента - 255 символов.")]
-    public string Name { get; set; }
+    public required string Name { get; set; }
 
     [Required(ErrorMessage = "Необходимо указать единицу измерения ингредиента.")]
     [StringLength(30, ErrorMessage = "Максимальная длина единицы измерения ингредиента - 30 символов.")]
-    public string Unit { get; set; }
+    public required string Unit { get; set; }
 
     [ValidateNever] public List<RecipeIngredient> RecipeIngredients { get; set; } = [];
 }
