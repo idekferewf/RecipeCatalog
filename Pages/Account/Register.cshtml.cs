@@ -28,11 +28,11 @@ public class RegisterModel : PageModel
         if (!ModelState.IsValid)
             return Page();
 
-        User? user = _context.Users.FirstOrDefault(u => u.Email == Input.Email);
+        var user = _context.Users.FirstOrDefault(u => u.Email == Input.Email);
 
         if (user == null)
         {
-            bool isFirstUser = !_context.Users.Any();
+            var isFirstUser = !_context.Users.Any();
             _context.Users.Add(new User
                 { Email = Input.Email, Password = Input.Password, Role = isFirstUser ? "Admin" : "User" }
             );
@@ -48,7 +48,7 @@ public class RegisterModel : PageModel
 
     private async Task Authenticate(string login)
     {
-        var claims = new List<Claim> { new Claim(ClaimsIdentity.DefaultNameClaimType, login) };
+        var claims = new List<Claim> { new(ClaimsIdentity.DefaultNameClaimType, login) };
         var identity = new ClaimsIdentity(claims, "ApplicationCookie");
         var principal = new ClaimsPrincipal(identity);
 

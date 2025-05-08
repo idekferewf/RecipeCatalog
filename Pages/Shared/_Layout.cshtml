@@ -54,7 +54,8 @@
                     else
                     {
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                               data-bs-toggle="dropdown">
                                 @username
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
@@ -110,7 +111,7 @@
 
     // проверяем сохранённой темы
     const savedTheme = localStorage.getItem('theme');
-    
+
     // установка начальной темы (localStorage в приоритете) и состояния чекбокса
     const initialTheme = savedTheme || (prefersDark ? "dark" : "light");
     html.setAttribute("data-bs-theme", initialTheme);

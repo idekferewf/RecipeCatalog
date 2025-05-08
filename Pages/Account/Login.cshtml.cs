@@ -28,7 +28,7 @@ public class LoginModel : PageModel
         if (!ModelState.IsValid)
             return Page();
 
-        User? user = _context.Users.FirstOrDefault(u => u.Email == Input.Email && u.Password == Input.Password);
+        var user = _context.Users.FirstOrDefault(u => u.Email == Input.Email && u.Password == Input.Password);
 
         if (user != null)
         {
@@ -44,8 +44,8 @@ public class LoginModel : PageModel
     {
         var claims = new List<Claim>
         {
-            new Claim(ClaimsIdentity.DefaultNameClaimType, login),
-            new Claim(ClaimsIdentity.DefaultRoleClaimType, role)
+            new(ClaimsIdentity.DefaultNameClaimType, login),
+            new(ClaimsIdentity.DefaultRoleClaimType, role)
         };
 
         var identity = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType,

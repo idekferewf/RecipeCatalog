@@ -2,7 +2,7 @@
 @using Microsoft.AspNetCore.Mvc.ModelBinding
 @model CategoryModel
 @{
-	bool isExists = Model.Category.Id != 0;
+	var isExists = Model.Category.Id != 0;
 	if (isExists)
 	{
 		ViewData["Title"] = Model.Category.Name;

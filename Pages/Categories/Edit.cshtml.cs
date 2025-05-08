@@ -20,11 +20,8 @@ public class CategoryModel : PageModel
     {
         if (id > 0)
         {
-            Category? category = _context.Categories.FirstOrDefault(c => c.Id == id);
-            if (category == null)
-            {
-                return NotFound();
-            }
+            var category = _context.Categories.FirstOrDefault(c => c.Id == id);
+            if (category == null) return NotFound();
 
             Category = category;
         }

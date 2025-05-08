@@ -1,6 +1,6 @@
 @page
 @using Microsoft.AspNetCore.Mvc.ModelBinding
-@model RecipeCatalog.Pages.Account.RegisterModel
+@model RegisterModel
 @{
     ViewData["Title"] = "Регистрация";
 }
@@ -12,10 +12,11 @@
             <p class="text-secondary-emphasis mt-1 mb-0">Заполните поля, чтобы зарегистрировать аккаунт</p>
             <form style="margin-top:28px" method="post">
                 <div asp-validation-summary="ModelOnly" class="ul-validation-summary mb-4 text-danger"></div>
-    
+
                 <div class="form-group">
                     <label asp-for="Input.Email">Email:</label>
-                    <input asp-for="Input.Email" type="email" class="mt-1 form-control @(ViewData.ModelState["Input.Email"]?.ValidationState == ModelValidationState.Invalid ? "is-invalid" : "")"
+                    <input asp-for="Input.Email" type="email"
+                           class="mt-1 form-control @(ViewData.ModelState["Input.Email"]?.ValidationState == ModelValidationState.Invalid ? "is-invalid" : "")"
                            style="height:42px;border-radius:10px" placeholder="Введите электронную почту"/>
                     <div class="invalid-feedback d-block">
                         <span asp-validation-for="Input.Email" class="text-danger"></span>
@@ -24,7 +25,8 @@
 
                 <div class="mt-3 form-group">
                     <label asp-for="Input.Password">Пароль:</label>
-                    <input asp-for="Input.Password" type="password" class="mt-1 form-control @(ViewData.ModelState["Input.Password"]?.ValidationState == ModelValidationState.Invalid ? "is-invalid" : "")"
+                    <input asp-for="Input.Password" type="password"
+                           class="mt-1 form-control @(ViewData.ModelState["Input.Password"]?.ValidationState == ModelValidationState.Invalid ? "is-invalid" : "")"
                            style="height:42px;border-radius:10px" placeholder="Введите пароль"/>
                     <div class="invalid-feedback d-block">
                         <span asp-validation-for="Input.Password" class="text-danger"></span>
@@ -33,7 +35,8 @@
 
                 <div class="mt-3 form-group">
                     <label asp-for="Input.ConfirmPassword">Повторите пароль:</label>
-                    <input asp-for="Input.ConfirmPassword" type="password" class="mt-1 form-control @(ViewData.ModelState["Input.ConfirmPassword"]?.ValidationState == ModelValidationState.Invalid ? "is-invalid" : "")"
+                    <input asp-for="Input.ConfirmPassword" type="password"
+                           class="mt-1 form-control @(ViewData.ModelState["Input.ConfirmPassword"]?.ValidationState == ModelValidationState.Invalid ? "is-invalid" : "")"
                            style="height:42px;border-radius:10px" placeholder="Введите пароль ещё раз"/>
                     <div class="invalid-feedback d-block">
                         <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>

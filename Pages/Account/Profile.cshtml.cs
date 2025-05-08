@@ -16,8 +16,7 @@ public class ProfileModel : PageModel
         _context = context;
     }
 
-    [BindProperty]
-    public required User CurrentUser { get; set; }
+    [BindProperty] public required User CurrentUser { get; set; }
 
     public bool IsAdmin => User.IsInRole("Admin");
 
@@ -27,10 +26,7 @@ public class ProfileModel : PageModel
         if (id == 0)
         {
             var email = User.Identity?.Name;
-            if (email == null)
-            {
-                return RedirectToPage("/Account/Login");
-            }
+            if (email == null) return RedirectToPage("/Account/Login");
 
             user = _context.Users.FirstOrDefault(u => u.Email == email);
         }
@@ -39,10 +35,7 @@ public class ProfileModel : PageModel
             user = _context.Users.FirstOrDefault(u => u.Id == id);
         }
 
-        if (user == null)
-        {
-            return NotFound();
-        }
+        if (user == null) return NotFound();
 
         CurrentUser = user;
 
@@ -51,16 +44,10 @@ public class ProfileModel : PageModel
 
     public IActionResult OnPost()
     {
-        if (!ModelState.IsValid)
-        {
-            return Page();
-        }
+        if (!ModelState.IsValid) return Page();
 
-        User? user = _context.Users.FirstOrDefault(u => u.Id == CurrentUser.Id);
-        if (user == null)
-        {
-            return NotFound();
-        }
+        var user = _context.Users.FirstOrDefault(u => u.Id == CurrentUser.Id);
+        if (user == null) return NotFound();
 
         if (User.IsInRole("Admin"))
         {
