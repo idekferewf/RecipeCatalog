@@ -32,7 +32,8 @@
 		<button type="submit" class="btn btn-primary">Сохранить</button>
 		@if (isExists)
 		{
-			<a class="btn btn-danger" asp-page="/Categories/Delete" asp-route-id="@Model.Category.Id">
+			<a class="btn btn-danger" asp-page="/Categories/Delete" asp-route-id="@Model.Category.Id"
+			   onclick="return confirm('Вы действительно хотите удалить категорию?')">
 				Удалить
 			</a>
 		}
