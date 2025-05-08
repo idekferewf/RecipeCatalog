@@ -61,12 +61,12 @@
         @* /Категория *@
     </div>
 
-    <div class="mt-3 d-flex gap-1">
+    <div class="mt-3 d-flex gap-2">
         <button asp-action="Edit" type="submit" class="btn btn-primary">Сохранить</button>
         @if (Model.Recipe.Id != 0)
         {
             <a asp-controller="Recipes" asp-action="Delete" asp-route-id="@Model.Recipe.Id" class="btn btn-danger"
-               onclick="return confirm('Вы действительно желаете удалить рецепт?')">
+               onclick="return confirm('Вы действительно хотите удалить рецепт?')">
                 Удалить
             </a>
         }

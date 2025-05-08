@@ -44,7 +44,8 @@
 								Редактировать
 							</a>
 							<a class="dropdown-item btn-danger" asp-page="/Categories/Delete"
-							   asp-route-id="@category.Id">
+							   asp-route-id="@category.Id"
+							   onclick="return confirm('Вы действительно хотите удалить категорию?')">
 								Удалить
 							</a>
 						</div>
