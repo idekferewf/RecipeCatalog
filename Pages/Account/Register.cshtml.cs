@@ -8,16 +8,16 @@ using RecipeCatalog.Model.Auth;
 
 namespace RecipeCatalog.Pages.Account;
 
-public class Register : PageModel
+public class RegisterModel : PageModel
 {
     private readonly ApplicationDbContext _context;
 
-    public Register(ApplicationDbContext context)
+    public RegisterModel(ApplicationDbContext context)
     {
         _context = context;
     }
 
-    [BindProperty] public required Model.Auth.Register Input { get; set; }
+    [BindProperty] public required Register Input { get; set; }
 
     public void OnGet()
     {
